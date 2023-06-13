@@ -1186,7 +1186,7 @@ PyObject *makeHeader(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "ii|s:Header", &w, &h, &channels))
       return NULL;
     Header header(w, h);
-    for (auto channel : split(channels, ',')) {
+    for (const auto& channel : split(channels, ',')) {
         header.channels().insert(channel.c_str(), Channel(FLOAT));
     }
     return dict_from_header(header);
